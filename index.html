@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#312e81" />
+  <title>DTE Assam | Result Portal</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #312e81;
+      --primary-light: #4f46e5;
+      --accent: #f59e0b;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #f1f5f9;
+        --text-light: #94a3b8;
+        --bg: #0f172a;
+        --card: #1e293b;
+        --shadow: 0 10px 30px rgba(0,0,0,0.4);
+      }
+      body { background: #0f172a; }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px 15px;
+      line-height: 1.6;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: linear-gradient(135deg, #1e1b4b, #0f172a); }
+    }
+
+    .container { max-width: 480px; margin: 0 auto; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px 0;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .header p {
+      font-size: 1.15rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .batch-card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      border: 2px solid #e0e7ff;
+    }
+
+    @media (prefers-color-scheme: dark) { .batch-card { border-color: #334155; } }
+
+    select {
+      width: 100%;
+      padding: 16px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 14px;
+      background: #eef2ff;
+      color: var(--primary);
+      text-align: center;
+      outline: none;
+      box-shadow: 0 4px 15px rgba(79,70,229,0.2);
+      cursor: pointer;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      select { background: #1e293b; color: #c084fc; }
+    }
+
+    .result-card {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 36px 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid #e0e7ff;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @media (prefers-color-scheme: dark) { .result-card { border-color: #334155; } }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* শুধুুুধু আইকন দিয়ে সুন্দর লোগো */
+    .logo-icon {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 48px;
+      box-shadow: 0 10px 30px rgba(49,46,129,0.4);
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 16px 0 10px;
+    }
+
+    .desc {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      padding: 0 10px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    button {
+      flex: 1;
+      padding: 18px;
+      border: none;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 8px 20px rgba(49,46,129,0.4);
+    }
+
+    .btn-primary:hover { transform: translateY(-3px); }
+
+    .btn-secondary {
+      background: #f3f4f6;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .btn-secondary {
+        background: #334155;
+        color: #a78bfa;
+        border-color: #a78bfa;
+      }
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .url-box {
+      background: #f8fafc;
+      color: #4f46e5;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      word-break: break-all;
+      border: 2px dashed #c084fc;
+      font-weight: 500;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .url-box {
+        background: #1e293b;
+        color: #c084fc;
+        border-color: #4f46e5;
+      }
+    }
+
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      padding: 24px;
+      background: var(--card);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      color: var(--text-light);
+    }
+
+    .footer h3 {
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .official-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      background: #dcfce7;
+      color: #166534;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .official-badge { background: #166534; color: #86efac; }
+    }
+
+    .refresh {
+      text-align: center;
+      margin-top: 30px;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>DTE Assam</h1>
+    <p>Polytechnic Result Portal</p>
+  </div>
+
+  <div class="batch-card">
+    <select id="batchSelect">
+      <option value="2023">Batch 2023 & Earlier</option>
+      <option value="2024">Batch 2024</option>
+      <option value="2025" selected>Batch 2025</option>
+    </select>
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <div class="logo-icon">
+      <i class="fas fa-graduation-cap"></i>
+    </div>
+
+    <h2 id="title">SAMARTH Portal - DTE Assam</h2>
+    <p class="desc" id="desc">For 2025 Batch & Future Admissions</p>
+
+    <div class="buttons">
+      <button class="btn-primary" id="openBtn">
+        Open Portal
+      </button>
+      <button class="btn-secondary" id="copyBtn">
+        Copy Link
+      </button>
+    </div>
+
+    <div class="url-box" id="urlDisplay">
+      https://dte-assam.samarth.edu.in/index.php/site/login
+    </div>
+
+    <div class="official-badge">
+      Official | Government of Assam
+    </div>
+  </div>
+
+  <div class="footer">
+    <h3>Directorate of Technical Education, Assam</h3>
+    <p>State Council for Technical Education (SCTE)</p>
+    <p>Kahilipara, Guwahati - 781019</p>
+  </div>
+
+  <div class="refresh">
+    Pull down to refresh
+  </div>
+</div>
+
+<script>
+  const portals = {
+    "2023": {
+      title: "SCTE Assam Student Portal",
+      url: "https://scteassam.in/",
+      desc: "For 2023 Batch & Earlier Students"
+    },
+    "2024": {
+      title: "SAMARTH Portal - DTE Assam",
+      url: "https://dte-assam.samarth.edu.in/index.php/site/login",
+      desc: "For 2024 Batch & New Admissions"
+    },
+    "2025": {
+      title: "SAMARTH Portal - DTE Assam",
+      url: "https://dte-assam.samarth.edu.in/index.php/site/login",
+      desc: "For 2025 Batch & Future Admissions"
+    }
+  };
+
+  const el = {
+    title: document.getElementById('title'),
+    desc: document.getElementById('desc'),
+    url: document.getElementById('urlDisplay'),
+    openBtn: document.getElementById('openBtn'),
+    copyBtn: document.getElementById('copyBtn'),
+    card: document.getElementById('resultCard')
+  };
+
+  function updateCard() {
+    const batch = document.getElementById("batchSelect").value;
+    const data = portals[batch];
+
+    el.card.style.opacity = "0.6";
+    setTimeout(() => {
+      el.title.textContent = data.title;
+      el.desc.textContent = data.desc;
+      el.url.textContent = data.url;
+
+      el.openBtn.onclick = () => window.open(data.url, '_blank');
+      el.copyBtn.onclick = () => {
+        navigator.clipboard.writeText(data.url);
+        el.copyBtn.innerHTML = 'Copied!';
+        setTimeout(() => el.copyBtn.innerHTML = 'Copy Link', 2000);
+      };
+
+      el.card.style.opacity = "1";
+    }, 250);
+  }
+
+  document.getElementById("batchSelect").addEventListener("change", updateCard);
+
+  // Pull to refresh
+  let startY;
+  window.addEventListener('touchstart', e => startY = e.touches[0].clientY);
+  window.addEventListener('touchend', e => {
+    if (startY - e.changedTouches[0].clientY > 120 && window.scrollY < 20) {
+      location.reload();
+    }
+  });
+
+  updateCard();
+</script>
+
+</body>
+</html>
