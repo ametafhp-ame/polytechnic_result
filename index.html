@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#312e81" />
   <title>DTE Assam | Result Portal</title>
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --primary: #312e81;
@@ -17,34 +15,26 @@
       --accent: #f59e0b;
       --text: #1e293b;
       --text-light: #64748b;
-      --bg: #f8fafc;
+      --bg: #ffffff;        /* সবকিছু সাদা */
       --card: #ffffff;
       --shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --text: #f1f5f9;
-        --text-light: #94a3b8;
-        --bg: #0f172a;
-        --card: #1e293b;
-        --shadow: 0 10px 30px rgba(0,0,0,0.4);
-      }
-      body { background: #0f172a; }
-    }
-
+    /* Dark mode পুরোপুরি বন্ধ করে দিলাম */
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+      background: #ffffff !important;   /* জোর করে সাদা */
       color: var(--text);
       min-height: 100vh;
       padding: 20px 15px;
       line-height: 1.6;
     }
 
-    @media (prefers-color-scheme: dark) {
-      body { background: linear-gradient(135deg, #1e1b4b, #0f172a); }
+    /* গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড পুরোপুরি সরিয়ে দিলাম */
+    html, body {
+      background: #ffffff !important;
     }
 
     .container { max-width: 480px; margin: 0 auto; }
@@ -54,14 +44,12 @@
       margin-bottom: 30px;
       padding: 20px 0;
     }
-
     .header h1 {
       font-size: 2.2rem;
       font-weight: 900;
       color: var(--primary);
       margin-bottom: 6px;
     }
-
     .header p {
       font-size: 1.15rem;
       color: var(--accent);
@@ -78,8 +66,6 @@
       border: 2px solid #e0e7ff;
     }
 
-    @media (prefers-color-scheme: dark) { .batch-card { border-color: #334155; } }
-
     select {
       width: 100%;
       padding: 16px;
@@ -95,10 +81,6 @@
       cursor: pointer;
     }
 
-    @media (prefers-color-scheme: dark) {
-      select { background: #1e293b; color: #c084fc; }
-    }
-
     .result-card {
       background: var(--card);
       border-radius: 24px;
@@ -109,14 +91,11 @@
       animation: fadeInUp 0.8s ease-out;
     }
 
-    @media (prefers-color-scheme: dark) { .result-card { border-color: #334155; } }
-
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* শুধুুুধু আইকন দিয়ে সুন্দর লোগো */
     .logo-icon {
       width: 110px;
       height: 110px;
@@ -171,7 +150,6 @@
       color: white;
       box-shadow: 0 8px 20px rgba(49,46,129,0.4);
     }
-
     .btn-primary:hover { transform: translateY(-3px); }
 
     .btn-secondary {
@@ -179,15 +157,6 @@
       color: var(--primary);
       border: 2px solid var(--primary);
     }
-
-    @media (prefers-color-scheme: dark) {
-      .btn-secondary {
-        background: #334155;
-        color: #a78bfa;
-        border-color: #a78bfa;
-      }
-    }
-
     .btn-secondary:hover {
       background: var(--primary);
       color: white;
@@ -202,14 +171,6 @@
       word-break: break-all;
       border: 2px dashed #c084fc;
       font-weight: 500;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .url-box {
-        background: #1e293b;
-        color: #c084fc;
-        border-color: #4f46e5;
-      }
     }
 
     .footer {
@@ -242,10 +203,6 @@
       font-size: 0.9rem;
     }
 
-    @media (prefers-color-scheme: dark) {
-      .official-badge { background: #166534; color: #86efac; }
-    }
-
     .refresh {
       text-align: center;
       margin-top: 30px;
@@ -255,13 +212,11 @@
   </style>
 </head>
 <body>
-
 <div class="container">
   <div class="header">
     <h1>DTE Assam</h1>
     <p>Polytechnic Result Portal</p>
   </div>
-
   <div class="batch-card">
     <select id="batchSelect">
       <option value="2023">Batch 2023 & Earlier</option>
@@ -269,15 +224,12 @@
       <option value="2025" selected>Batch 2025</option>
     </select>
   </div>
-
   <div class="result-card" id="resultCard">
     <div class="logo-icon">
       <i class="fas fa-graduation-cap"></i>
     </div>
-
     <h2 id="title">SAMARTH Portal - DTE Assam</h2>
     <p class="desc" id="desc">For 2025 Batch & Future Admissions</p>
-
     <div class="buttons">
       <button class="btn-primary" id="openBtn">
         Open Portal
@@ -286,22 +238,18 @@
         Copy Link
       </button>
     </div>
-
     <div class="url-box" id="urlDisplay">
       https://dte-assam.samarth.edu.in/index.php/site/login
     </div>
-
     <div class="official-badge">
       Official | Government of Assam
     </div>
   </div>
-
   <div class="footer">
     <h3>Directorate of Technical Education, Assam</h3>
     <p>State Council for Technical Education (SCTE)</p>
     <p>Kahilipara, Guwahati - 781019</p>
   </div>
-
   <div class="refresh">
     Pull down to refresh
   </div>
@@ -338,20 +286,17 @@
   function updateCard() {
     const batch = document.getElementById("batchSelect").value;
     const data = portals[batch];
-
     el.card.style.opacity = "0.6";
     setTimeout(() => {
       el.title.textContent = data.title;
       el.desc.textContent = data.desc;
       el.url.textContent = data.url;
-
       el.openBtn.onclick = () => window.open(data.url, '_blank');
       el.copyBtn.onclick = () => {
         navigator.clipboard.writeText(data.url);
         el.copyBtn.innerHTML = 'Copied!';
         setTimeout(() => el.copyBtn.innerHTML = 'Copy Link', 2000);
       };
-
       el.card.style.opacity = "1";
     }, 250);
   }
@@ -369,6 +314,5 @@
 
   updateCard();
 </script>
-
 </body>
 </html>
